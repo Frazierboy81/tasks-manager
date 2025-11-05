@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import './App.css'
-import ContactForm from './components/ContactForm';
-import UserList from './components/UserList';
+// import ContactForm from './components/ContactForm';
+// import UserList from './components/UserList';
 import  TaskList, {type Task} from './components/TaskList';
 
 
@@ -55,6 +55,7 @@ function App() {
   
 const onDelete = () => {
 
+
 }
 
 const onStatusChange = () => {
@@ -63,7 +64,7 @@ const onStatusChange = () => {
 
 
   return (
-    <div className='bg-zinc-500 h-screen'>
+    <div className='bg-zinc-500 p-5'>
       <h1 className='text-5xl'>Tasks Manager</h1>
 
       {/* <UserList/>
@@ -73,6 +74,8 @@ const onStatusChange = () => {
       tasks={tasks}
       onDelete={onDelete}
       onStatusChange={onStatusChange}/>
+      
+
     </div>
   )
 }
