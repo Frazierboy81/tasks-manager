@@ -60,6 +60,8 @@ function TaskList({tasks, onStatusChange, onDelete}: TaskListProps) {
     return(
 
         <div className="text-2xl pt-4">
+
+            
             <div className="flex flex-row">
                 <div>Status</div>
                 <div className=" ml-22">Priority</div>
@@ -68,9 +70,7 @@ function TaskList({tasks, onStatusChange, onDelete}: TaskListProps) {
             <TaskFilter onFilterChange={onFilterChange}/>
             {filterTasks.map((tasks) => (
                 <TaskItem task={tasks} key={tasks.id} onStatusChange={onStatusChange} onDelete={onDelete}/>
-            ))}
-        
-            
+            ))}            
         </div>
     )
 }

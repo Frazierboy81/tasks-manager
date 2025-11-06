@@ -10,7 +10,7 @@ export interface TaskItemProps {
 
 type Priority = "low" | "medium" | "high";
 
-function TaskItem({task, onStatusChange }: TaskItemProps) {
+function TaskItem({task, onStatusChange, onDelete}: TaskItemProps) {
 
     const [currentStatus, setCurrentStatus] = useState(task.status);
 
@@ -18,6 +18,16 @@ function TaskItem({task, onStatusChange }: TaskItemProps) {
         setCurrentStatus(e.target.value as TaskStatus);
         onStatusChange(task.id, e.target.value as TaskStatus);
       };
+
+      const handleDelete = () => {
+        
+        if (task.id) {
+
+          onDelete(task.id)
+            
+        }
+
+      }
 
       const statusStyles: { [key in TaskStatus]: string } = {
         pending: "text-yellow-700",
@@ -35,7 +45,22 @@ function TaskItem({task, onStatusChange }: TaskItemProps) {
       return (
 
         <div className="outline m-4 rounded-md">
-         <div>{task.title}</div>
+
+        <div className="">
+        <select value={currentStatus} onChange={handleChange} className={`bg-black-700 h-10 flex justify-end ${statusStyles[currentStatus]}`}>
+                    <option value="pending">
+                      <span>Pending</span>
+                    </option>
+                    <option value="in-progress">
+                      <span>In-Progress</span>
+                    </option>
+                    <option value="completed">
+                      <span>Completed</span>
+                    </option>
+                  </select>
+        </div>
+         <div className="">{task.title} 
+          <button className="outline m-4 rounded-md" onClick={handleDelete}>Delete</button></div>
          <div>{task.description}</div>
           <div>
             Status: {" "}
@@ -47,17 +72,7 @@ function TaskItem({task, onStatusChange }: TaskItemProps) {
             <span className={priorityStyles[task.priority]}>{task.priority}</span>
           </div>
 
-          <select value={currentStatus} onChange={handleChange} className={`bg-black-700 h-10 ${statusStyles[currentStatus]}`}>
-            <option value="pending">
-              <span>Pending</span>
-            </option>
-            <option value="in-progress">
-              <span>In-Progress</span>
-            </option>
-            <option value="completed">
-              <span>Completed</span>
-            </option>
-          </select>
+          
 
         </div>
 

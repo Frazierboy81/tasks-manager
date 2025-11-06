@@ -26,13 +26,13 @@ const handleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 
 return (
   <div className="">
-    <select name="status" onChange={handleChange} className="outline">
+    <select name="status" onChange={handleChange} className="rounded-md bg-gray-400">
       <option value="">All</option>
       <option value="pending">Pending</option>
       <option value="in-progress">In Progress</option>
       <option value="completed">Completed</option>
     </select>
-    <select name="priority" onChange={handleChange} className="outline ml-4">
+    <select name="priority" onChange={handleChange} className="bg-gray-400 ml-4 rounded-md">
       <option value="">All</option>
       <option value="low">low</option>
       <option value="medium">medium</option>
